@@ -1,0 +1,30 @@
+.todolist-wrapper {
+    height: 41px;
+    justify-content: center;
+    cursor: pointer;
+    margin-right: 23px;
+}
+
+.list-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.task-title-wrapper {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bolder;
+    margin-bottom: 0px;
+}
+
+.task-list-container {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.task-input-wrapper {
+    width: 90%;
+}
+
+.tasl-list-body-wrapper {
+    padding-right: 0px !important;
+}

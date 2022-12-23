@@ -1,0 +1,146 @@
+<div class="row mt-5">
+  <div class="offset-1"></div>
+  <div class="col-2">
+    <div class="card task-list-container" cdkDropList id="iceBox" #iceBox="cdkDropList" [cdkDropListData]="iconBoxList"
+      [cdkDropListConnectedTo]="['icebox','pending', 'wip', 'review', 'done']" (cdkDropListDropped)="drop($event)">
+      <div class="card-title mt-3 task-title-wrapper">IceBox</div>
+      <div class="card my-3 mx-2 px-3 d-flex todolist-wrapper" *ngFor="let item of iconBoxList" cdkDrag>
+        {{ item.name }}
+      </div>
+      <ng-container *ngIf="isAddNewModalShown === 'iceBox'">
+        <div class="card my-3 mr-4 mx-3">
+          <div class="card-body">
+            <h2>Add Item</h2>
+            <div>
+              <input class="task-input-wrapper" placeholder="Enter Card Title" [(ngModel)]="newAddedData" />
+            </div>
+            <button type="button" class="btn btn-secondary my-2 mr-2" (click)="insertCard('iceBox')">
+              Insert
+            </button>
+            <button class="btn btn-danger" (click)="cancelData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary my-2 mx-2" (click)="addTaskDetail('iceBox'); newAddedData = ''">
+        Add Item
+      </button>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card task-list-container" cdkDropList id="pending" #pending="cdkDropList"
+      [cdkDropListData]="pendingList" [cdkDropListConnectedTo]="['icebox','pending', 'wip', 'review', 'done']"
+      (cdkDropListDropped)="drop($event)">
+      <div class="card-title mt-3 task-title-wrapper">Pending</div>
+      <div class="card my-3 px-3 mx-2 d-flex todolist-wrapper" *ngFor="let item of pendingList" cdkDrag>
+        {{ item.name }}
+      </div>
+      <ng-container *ngIf="isAddNewModalShown === 'pending'">
+        <div class="card my-3 mr-4 mx-3">
+          <div class="card-body">
+            <h2>Add Item</h2>
+            <div>
+              <input class="task-input-wrapper" placeholder="Enter Card Title" [(ngModel)]="newAddedData" />
+            </div>
+            <button type="button" class="btn btn-secondary my-2 mr-2" (click)="insertCard('pending')">
+              Insert
+            </button>
+            <button class="btn btn-danger" (click)="cancelData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary my-2 mx-2" (click)="addTaskDetail('pending'); newAddedData = ''">
+        Add Item
+      </button>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card task-list-container" cdkDropList id="wip" #wip="cdkDropList" [cdkDropListData]="wipList"
+      [cdkDropListConnectedTo]="['icebox','pending', 'wip', 'review', 'done']" (cdkDropListDropped)="drop($event)">
+      <div class="card-title mt-3 task-title-wrapper">Wip</div>
+      <div class="card my-3 mx-2 px-3 d-flex todolist-wrapper" *ngFor="let item of wipList" cdkDrag>
+        {{ item?.name }}
+      </div>
+      <ng-container *ngIf="isAddNewModalShown === 'wip'">
+        <div class="card my-3 mr-4 mx-3">
+          <div class="card-body">
+            <h2>Add Item</h2>
+            <div>
+              <input class="task-input-wrapper" placeholder="Enter Card Title" [(ngModel)]="newAddedData" />
+            </div>
+            <button type="button" class="btn btn-secondary my-2 mr-2" (click)="insertCard('wip')">
+              Insert
+            </button>
+            <button class="btn btn-danger" (click)="cancelData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary my-2 mx-2" (click)="addTaskDetail('wip'); newAddedData = ''">
+        Add Item
+      </button>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card task-list-container" cdkDropList id="review" #review="cdkDropList" [cdkDropListData]="reviewList"
+      [cdkDropListConnectedTo]="['icebox','pending', 'wip', 'review', 'done']" (cdkDropListDropped)="drop($event)">
+      <div class="card-title mt-3 mx-2 task-title-wrapper">Review</div>
+      <div class="card my-3 px-3 mx-2 d-flex todolist-wrapper" *ngFor="let item of reviewList" cdkDrag>
+        {{ item.name }}
+      </div>
+      <ng-container *ngIf="isAddNewModalShown === 'review'">
+        <div class="card my-3 mr-4 mx-3">
+          <div class="card-body">
+            <h2>Add Item</h2>
+            <div>
+              <input class="task-input-wrapper" placeholder="Enter Card Title" [(ngModel)]="newAddedData" />
+            </div>
+            <button type="button" class="btn btn-secondary my-2 mr-2" (click)="insertCard('review')">
+              Insert
+            </button>
+            <button class="btn btn-danger" (click)="cancelData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary my-2 mx-2" (click)="addTaskDetail('review'); newAddedData = ''">
+        Add Item
+      </button>
+    </div>
+  </div>
+  <div class="col-2">
+    <div class="card task-list-container" cdkDropList id="done" #done="cdkDropList" [cdkDropListData]="doneList"
+      [cdkDropListConnectedTo]="['icebox','pending', 'wip', 'review', 'done']" (cdkDropListDropped)="drop($event)">
+      <div class="card-title mt-3 task-title-wrapper">Done</div>
+      <div class="card my-3 px-3 mx-2 d-flex todolist-wrapper" *ngFor="let item of doneList" cdkDrag>
+        {{ item.name }}
+      </div>
+      <ng-container *ngIf="isAddNewModalShown === 'done'">
+        <div class="card my-3 mr-4 mx-3">
+          <div class="card-body">
+            <h2>Add Item</h2>
+            <div>
+              <input class="task-input-wrapper" placeholder="Enter Card Title" [(ngModel)]="newAddedData" />
+            </div>
+            <button type="button" class="btn btn-secondary my-2 mr-2" (click)="insertCard('done')">
+              Insert
+            </button>
+            <button class="btn btn-danger" (click)="cancelData()">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </ng-container>
+      <button class="btn btn-primary my-2 mx-2" (click)="addTaskDetail('done'); newAddedData = ''">
+        Add Item
+      </button>
+    </div>
+  </div>
+  <div class="offset-1"></div>
+
+</div>
